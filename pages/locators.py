@@ -17,3 +17,8 @@ class ProductPageLocators():
     BASKET_VALUE = (By.CSS_SELECTOR, '.alertinner p strong')
     MESSAGE_ABOUT_ADDING = (By.CSS_SELECTOR, 'div.alert:nth-child(1) strong')
 
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+

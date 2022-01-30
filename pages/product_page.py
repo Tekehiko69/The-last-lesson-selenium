@@ -4,6 +4,10 @@ import time
 
 class ProductPage(BasePage):
 
+    def add_product_to_basket_te(self):
+        add_btn = self.browser.find_element(*ProductPageLocators.ADD_BTN)
+        add_btn.click()
+
     def add_product_to_basket(self):
 
         self.should_be_add_btn()
@@ -14,6 +18,7 @@ class ProductPage(BasePage):
         add_btn.click()
 
         self.solve_quiz_and_get_code()
+        time.sleep(10)
         self.should_be_msg_adding()
         self.compare_basket_and_price()
 
@@ -38,3 +43,10 @@ class ProductPage(BasePage):
         basket_price = self.browser.find_element(*ProductPageLocators.BASKET_VALUE).text
 
         assert product_price == basket_price, 'Price and basket value is not equal'
+
+    def not_should_be_msg_element_present(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDING), 'The success msg is not found (pre)'
+
+    def not_should_be_msg_disappered(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ABOUT_ADDING), 'The success msg is not found (dis)'
+
